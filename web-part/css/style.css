@@ -1,0 +1,167 @@
+body {
+	min-width: 320px;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+	/* адаптивність всіх картинок */
+}
+
+
+
+header {
+	min-height: 600px;
+	color: #fff;
+}
+
+a {
+	font-size: 22px;
+}
+
+h1 {
+	font-size: 58px;
+	font-weight: 600;
+}
+
+
+.main-header {
+	background: linear-gradient(to right bottom, rgba(189, 195, 199, 0.7), rgba(44, 62, 80, 0.9)), url('../img/hack.jpg') center no-repeat;
+	-webkit-background-size: cover;
+	background-size: cover;
+	height: 100vh;
+	position: relative;
+}
+
+.main-header .navbar-brand,
+.main-header ul li a
+ {
+	color: #fff;
+	font-weight: 600;
+	margin-left: 30px;
+}
+
+.main-header ul li a::after {
+	content: '';
+	display: block;
+	width: 100%;
+	background-color: #fff;
+	height: 1px;
+	transform: scale(0);
+	transition: all ease 0.5s;
+	color: #fff;
+}
+
+.main-header ul li a:hover::after {
+	color: #fff;
+	transform: scale(1);
+	font-weight: 600;
+} 
+
+.login {
+	margin-right: 10em;
+	right: 0;
+	position: absolute;
+	text-transform: uppercase;
+}
+
+.navbar {
+	padding: 16px;
+	margin-left: 32px;
+}
+
+
+
+.header-text {
+	position: absolute;
+	width: 700px;
+	padding: 16px;
+	left: 10%;
+	top: 25%;
+
+}
+
+.header-text .intro {
+	border-right: 10px solid #ffc107;
+}
+
+.header-text p {
+	width: 70%;
+	margin-top: 20px;
+	font-size: 20px;
+}
+
+.button-holder {
+	text-align: left;
+	left: auto;
+}
+
+
+
+
+.button-holder .more {
+	width: 80px;
+	color: #fff;
+	border: 3px solid #fff;
+	font-weight: 600;
+	opacity: 0.5;
+	padding: 6px 24px 6px 24px;
+	transition: all 0.3s ease;
+	 
+}
+.button-holder .more:hover {
+	opacity: 1;
+	color: #fff; 
+}
+
+
+.button-holder .register {
+	color: #fff;
+	border: 3px solid #fff;
+	font-weight: 600;
+	opacity: 0.5;
+	padding: 6px 24px 6px 24px;
+	transition: all 0.3s ease;
+	 
+}
+.button-holder .register:hover {
+	opacity: 1;
+	color: #fff; 
+}
+
+
+
+
+
+@media only screen and (max-width: 360px) {
+	a {
+		color: #fff;
+	}
+	.navbar .navbar-brand {
+		font-size: 26px;
+		margin: 0 auto;
+	}
+} 
+
+
+@media only screen and (min-width: 576px) { }
+
+// Medium devices (tablets, 768px and up)
+@media only screen and (max-width: 768px) { 
+	a {
+		font-size: 2px;
+	}
+}
+
+// Large devices (desktops, 992px and up)
+@media only screen and (max-width: 992px) { 
+	a {
+		font-size: 16px;
+	}
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media only screen and (max-width: 1200px) { 
+
+	
+}
