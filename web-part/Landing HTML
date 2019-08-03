@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Hack Fells</title>
+
+	<link rel="stylesheet" href="C:\Users\РінеймедЮсер\Desktop\Hack Fells\Верстка\Hack fells.css">
+</head>
+
+<body>
+<div class="head" >
+
+<img src="C:\Users\РінеймедЮсер\Desktop\Hack Fells\Верстка\img\Logo.png" class="Logo">
+
+<nav>
+	<ul class="menu">
+		<li>
+			<a href="#"> Про проект </a>
+		</li><li>
+			<a href="#"> Наші команди </a>
+		</li><li>
+			<a href="#"> Розробники </a>
+		</li>
+		<li>
+	<button class="Log">
+			<a href="#"> Log in </a>
+			</button>
+		</li>
+	</ul>
+</nav>
+
+
+</div>
+</body>
+
+</html>
