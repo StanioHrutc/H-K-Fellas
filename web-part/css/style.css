@@ -24,6 +24,9 @@ h1 {
 	font-weight: 600;
 }
 
+p {
+	padding-top: 78px;
+}
 
 .main-header {
 	background: linear-gradient(to right bottom, rgba(189, 195, 199, 0.7), rgba(44, 62, 80, 0.9)), url('../img/hack.jpg') center no-repeat;
@@ -58,6 +61,12 @@ h1 {
 	font-weight: 600;
 } 
 
+.logo {
+	padding: 20px 115px 0px 0px;
+}
+
+/* Менюшка сунеться вниз і вправо */
+
 .login {
 	margin-right: 10em;
 	right: 0;
@@ -75,7 +84,7 @@ h1 {
 .header-text {
 	position: absolute;
 	width: 700px;
-	padding: 16px;
+	padding: 16px 0px 0px 16px;
 	left: 10%;
 	top: 25%;
 
@@ -86,20 +95,23 @@ h1 {
 }
 
 .header-text p {
+
 	width: 70%;
-	margin-top: 20px;
-	font-size: 20px;
+	font-size: 25px;
 }
+
+
 
 .button-holder {
 	text-align: left;
 	left: auto;
+	padding-top: 76px;
 }
+/* Розміщення кнопок get started і learn more */
 
 
 
-
-.button-holder .more {
+.learn-more {
 	width: 80px;
 	color: #fff;
 	border: 3px solid #fff;
@@ -109,25 +121,30 @@ h1 {
 	transition: all 0.3s ease;
 	 
 }
-.button-holder .more:hover {
+.button-holder .learn-more:hover {
 	opacity: 1;
 	color: #fff; 
 }
 
 
-.button-holder .register {
+.get-started {
 	color: #fff;
 	border: 3px solid #fff;
 	font-weight: 600;
 	opacity: 0.5;
 	padding: 6px 24px 6px 24px;
 	transition: all 0.3s ease;
+
 	 
 }
-.button-holder .register:hover {
+.button-holder .get-started:hover {
 	opacity: 1;
 	color: #fff; 
 }
+
+
+
+
 
 
 
