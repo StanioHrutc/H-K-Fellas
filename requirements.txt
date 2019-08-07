@@ -1,0 +1,12 @@
+beautifulsoup4==4.1.0
+Click==7.0
+Django==2.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.1
+pytz==2019.1
+reverse==0.1.0
+sqlparse==0.3.0
+views==0.3
+virtualenv==16.6.2
+Werkzeug==0.15.1
