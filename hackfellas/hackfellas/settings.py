@@ -40,6 +40,7 @@ INSTALLED_APPS = [
 
     # custom apps
     'intro.apps.IntroConfig',
+    'personal.apps.PersonalConfig',
 ]
 
 MIDDLEWARE = [

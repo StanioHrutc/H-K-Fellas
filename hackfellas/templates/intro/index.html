@@ -1,23 +1,6 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-
-    <!-- Adaptive -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-	<!-- Bootstrap CSS -->
-	<link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.css' %}">
-
-	<!-- CSS-->
-	<link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <title>Index</title>
-
-</head>
-
-<body>
+{% block content %}
 
 	<header class="main-header">
 
@@ -67,16 +50,57 @@
 	</header>
 
 
-	<footer>
-		<h1>New post</h1>
-		<form method="POST" class="post-form">
+
+	<footer class="main-footer">
+		<div class="wrapper">
+		<form class="form" method="post">
 			{% csrf_token %}
-        	{{ form.as_p }}
-        	<button type="submit" class="save btn btn-default">Save</button>
-    	</form>
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/profile.png" alt="">
+				</div>
+				<!--<input type="text" class="input form-control" placeholder="Name" aria-label="Username" id="name"> -->
+				{{ form.first_name }}
+
+			</div>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/profile.png" alt="">
+				</div>
+				{{ form.username }}
+			</div>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/email.png" alt="">
+				</div>
+				{{ form.email }}
+			</div>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/password.png" alt="">
+				</div>
+				{{ form.password }}
+			</div>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/confirm.png" alt="">
+				</div>
+				{{ form.confirm }}
+			</div>
+
+			<div class="input-group flex-nowrap">
+				<div class="btn-holder">
+					<input type="submit" value="register" class="btn-send">
+				</div>
+
+			</div>
+
+		</form>
+		</div>
 	</footer>
 
-
-</body>
-
-</html>
+{% endblock %}

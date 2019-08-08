@@ -130,6 +130,94 @@ h1 {
 }
 
 
+.main-footer {
+	height: 100vh;
+	width: auto;
+	background: url('../img/foot.jpg');
+	-webkit-background-size: cover;
+	background-size: cover;
+	position: relative;
+}
+
+
+::placeholder {
+	color: #d4d4d4;
+}
+
+.wrapper {
+	margin: 0 auto;
+	width: 800px;
+	padding-top: 60px;
+}
+
+
+
+.form {
+	width: 600px;
+	margin-bottom: 50px;
+	margin-top: 50px;
+	margin: 0 auto;
+}
+
+.input-group {
+	width: 100%;
+	margin-top: 20px;
+}
+
+
+.input-group .input {
+	width: 100%;
+	color: white;
+	height: 44px;
+	border: 0;
+  	outline: 0;
+  	color: white;
+  	background: transparent;
+  	border-bottom: 3px solid #43518e;
+	transition: ease 0.7s all;
+}
+
+.input-group input:focus {
+	background-color: rgba(190, 180, 180, 0.4);
+	box-shadow: none;
+	border-bottom: 3px solid #fff;
+}
+
+
+.input-group-prepend {
+	width: 36px;
+	height: 36px;
+	margin-top: 8px;
+	margin-right: 20px;
+}
+
+
+.btn-holder {
+	text-align: center;
+	width: 100%;
+	margin-top: 24px;
+}
+
+.btn-send {
+	background: #625F66;
+	border: none;
+	border-radius: 24px;
+	width: 284px;
+	height: 46px;
+	font-weight: 300;
+	font-size: 20px;
+	letter-spacing: 5px;
+	color: #d4d4d4;
+
+	transition: ease 0.4s all;
+}
+
+.btn-send:hover {
+	background: #43518e;
+	font-weight: 400;
+	color: #fff;
+	letter-spacing: 7px;
+}
 
 
 
