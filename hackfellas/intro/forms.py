@@ -3,6 +3,41 @@ from django.contrib.auth.models import User
 from django.core.validators import validate_email
 
 
+class FormValidators(object):
+
+    @classmethod
+    def validate_password(cls, password):
+        if len(password) >= 6:
+            try:
+                is_numb = int(password)
+                raise forms.ValidationError('Password must contain at least one char')
+            except ValueError:
+                print('passwords are correct')
+                return password
+
+        else:
+            print('password not match')
+            raise forms.ValidationError('Password must contain 6 or more characters')
+
+    @classmethod
+    def validate_confirmation(cls, password, confirm):
+        if password == confirm:
+            return FormValidators.validate_password(password=password)
+        else:
+            print('password not match')
+            raise forms.ValidationError('Password do not match')
+
+    @classmethod
+    def validate_email(cls, email):
+        try:
+            validate_email(email)
+        except forms.ValidationError:
+            print('email error')
+            raise forms.ValidationError('Incorrect email, please try again')
+
+        return email
+
+
 class RegistrationForm(forms.Form):
     # fields of our form
     password = forms.CharField(widget=forms.TextInput(attrs={
@@ -47,8 +82,6 @@ class RegistrationForm(forms.Form):
 
     # meta information about model which we are working with, and related fields
 
-
-
     def clean_confirm(self):
         ''' method for password validation '''
 
@@ -57,35 +90,14 @@ class RegistrationForm(forms.Form):
 
         print(password, password2)
 
-        if password == password2:
-            if len(password) >= 6:
-                try:
-                    is_numb = int(password)
-                except:
-                    print('passwords are correct')
-                    return password
-
-            else:
-                print('password not match')
-                raise forms.ValidationError('Password must contain 6 or more characters')
-        else:
-            print('password not match')
-            raise forms.ValidationError('Password do not match')
+        return FormValidators.validate_confirmation(password=password, confirm=password2)
 
     def clean_email(self):
         ''' method for email validation '''
-        # clean data from input fields
-
 
         email = self.cleaned_data.get('email')
 
-        try:
-            validate_email(email)
-        except:
-            print('email error')
-            raise forms.ValidationError('Incorrect email, please try again')
-
-        return email
+        FormValidators.validate_email(email=email)
 
     def clean_name(self):
         ''' method for name validation '''
@@ -120,3 +132,31 @@ class RegistrationForm(forms.Form):
         else:
             raise forms.ValidationError('User name should contain 4 and more characters')
 
+
+class LoginForm(forms.Form):
+
+    password = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Password',
+        'type': 'password',
+        'class': 'input form-control',
+        'id': 'password',
+        'required': True
+    }))
+
+    email = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Email',
+        'type': 'email',
+        'class': 'input form-control',
+        'id': 'email',
+        'required': True
+    }))
+
+    def clean_password(self):
+        password = self.cleaned_data['password']
+
+        return FormValidators.validate_password(password=password)
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+
+        return FormValidators.validate_email(email=email)
