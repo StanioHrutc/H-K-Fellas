@@ -26,7 +26,7 @@
 					</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Our Teams</a></li>
 					<li class="nav-item"><a href="#" class="nav-link">Developers</a></li>
-					<li class="nav-item login"><a href="#" class="nav-link">login
+					<li class="nav-item login"><a href="{% url 'login' %}" class="nav-link">login
 					</a></li>
 
 				</ul>
@@ -40,10 +40,10 @@
 				<h1>Where your team</h1>
 				<h1>Was born</h1>			
 			</div>
-			<p>Service which help you to find new fellas for your team in order to win your dream hackathon</p>
+			<p>Service which help you to find new fellows for your team in order to win your dream hackathon</p>
 
 			<div class="button-holder">
-				<a href="#" class="register">register</a>
+				<a href="#main-footer-id" class="register">register</a>
 				<a href="#" class="more">More</a>
 			</div>
 		</div>
@@ -51,7 +51,7 @@
 
 
 
-	<footer class="main-footer">
+	<footer class="main-footer" id="main-footer-id">
 		<div class="wrapper">
 		<form class="form" method="post">
 			{% csrf_token %}
@@ -61,8 +61,9 @@
 				</div>
 				<!--<input type="text" class="input form-control" placeholder="Name" aria-label="Username" id="name"> -->
 				{{ form.first_name }}
-
 			</div>
+			<p id="error-name" class="error-msg">{{ form.first_name.errors }}</p>
+
 
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
@@ -70,6 +71,7 @@
 				</div>
 				{{ form.username }}
 			</div>
+			<p id="error-username" class="error-msg">{{ form.username.errors }}</p>
 
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
@@ -77,28 +79,29 @@
 				</div>
 				{{ form.email }}
 			</div>
+			<p id="error-email" class="error-msg">{{ form.email.errors }}</p>
 
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="../static/img/password.png" alt="">
 				</div>
 				{{ form.password }}
-				{{ form.password.errors }}
 			</div>
+			<p id="error-password" class="error-msg">{{ form.password.errors }}</p>
+
 
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="../static/img/confirm.png" alt="">
 				</div>
 				{{ form.confirm }}
-				{{ form.confirm.errors }}
 			</div>
+			<p id="error-confirm" class="error-msg">{{ form.confirm.errors }}</p>
 
 			<div class="input-group flex-nowrap">
 				<div class="btn-holder">
-					<input type="submit" value="register" class="btn-send">
+					<input id="register" type="submit" value="register" class="btn-send" disabled>
 				</div>
-
 			</div>
 
 		</form>

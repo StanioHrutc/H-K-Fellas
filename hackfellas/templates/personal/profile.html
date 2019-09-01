@@ -1,10 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <h1>you had successfully</h1>
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+    <h1>{{user.first_name}} had successfully</h1>
+{% else %}
+    <h1>Please register </h1>
+{% endif %}
+
+<h1>
+    <a href="{% url 'logout' %}">
+        logout
+    </a>
+</h1>
+
+
+<a href="#">Hackathons (soon available)</a>
+<br>
+<a href="#">Find team (soon available)</a>
+<br>
+<a href="#">Create team (soon available)</a>
+<br>
+<a href="#">Manual (soon available)</a>
+<br>
+{% endblock %}

@@ -5,8 +5,19 @@ from django.core.validators import validate_email
 
 class FormValidators(object):
 
-    @classmethod
-    def validate_password(cls, password):
+    @staticmethod
+    def validate_name(field, field_name):
+        if len(field) > 4:
+            try:
+                some_name = int(field)
+                raise forms.ValidationError('{0} should contain at least 1 character'.format(field_name))
+            except ValueError:
+                return field
+        else:
+            raise forms.ValidationError('{0} should contain 4 and more characters'.format(field_name))
+
+    @staticmethod
+    def validate_password(password):
         if len(password) >= 6:
             try:
                 is_numb = int(password)
@@ -19,16 +30,16 @@ class FormValidators(object):
             print('password not match')
             raise forms.ValidationError('Password must contain 6 or more characters')
 
-    @classmethod
-    def validate_confirmation(cls, password, confirm):
+    @staticmethod
+    def validate_confirmation(password, confirm):
         if password == confirm:
             return FormValidators.validate_password(password=password)
         else:
             print('password not match')
             raise forms.ValidationError('Password do not match')
 
-    @classmethod
-    def validate_email(cls, email):
+    @staticmethod
+    def validate_email(email):
         try:
             validate_email(email)
         except forms.ValidationError:
@@ -44,40 +55,45 @@ class RegistrationForm(forms.Form):
         'placeholder': 'Password',
         'type': 'password',
         'class': 'input form-control',
-        'id': 'password',
-        'required': True
+        'id': 'input-password',
+        'required': True,
+        'autocomplete': 'off'
     }))
 
     confirm = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Confirm your password',
         'type': 'password',
         'class': 'input form-control',
-        'id': 'confirm',
-        'required': True
+        'id': 'input-confirm',
+        'required': True,
+        'autocomplete': 'off'
     }))
 
     email = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Email',
         'type': 'email',
         'class': 'input form-control',
-        'id': 'email',
-        'required': True
+        'id': 'input-email',
+        'required': True,
+        'autocomplete': 'off'
     }))
 
     first_name = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Name',
         'type': 'text',
         'class': 'input form-control',
-        'id': 'name',
-        'required': True
+        'id': 'input-name',
+        'required': True,
+        'autocomplete': 'off'
     }))
 
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'User name',
         'type': 'text',
         'class': 'input form-control',
-        'id': 'username',
-        'required': True
+        'id': 'input-username',
+        'required': True,
+        'autocomplete': 'off'
     }))
 
     # meta information about model which we are working with, and related fields
@@ -104,33 +120,17 @@ class RegistrationForm(forms.Form):
 
         name = self.cleaned_data('first_name')
 
-        try:
-            x = int(name)
-        except ValueError:
-            raise forms.ValidationError('name should contain only characters')
-
-        if len(name) > 4:
-            for char in name:
-                if type(char) == int:
-                    raise forms.ValidationError('name should not contain a number')
-            return name
-        else:
-            raise forms.ValidationError('Name should contain 4 and more characters')
+        for char in FormValidators.validate_name(name, 'Name'):
+            if type(char) == int:
+                raise forms.ValidationError('Name should not contain a number')
+        return name
 
     def clean_user_name(self):
         ''' method for user name validation '''
 
         user_name = self.cleaned_data('username')
 
-        if len(user_name) > 4:
-            try:
-                name = int(user_name)
-            except ValueError:
-                raise forms.ValidationError('user name should contain at least 1 character')
-
-            return user_name
-        else:
-            raise forms.ValidationError('User name should contain 4 and more characters')
+        FormValidators.validate_name(user_name, 'User name')
 
 
 class LoginForm(forms.Form):
@@ -143,11 +143,11 @@ class LoginForm(forms.Form):
         'required': True
     }))
 
-    email = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Email',
-        'type': 'email',
+    username = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'User name',
+        'type': 'text',
         'class': 'input form-control',
-        'id': 'email',
+        'id': 'username',
         'required': True
     }))
 
@@ -156,7 +156,7 @@ class LoginForm(forms.Form):
 
         return FormValidators.validate_password(password=password)
 
-    def clean_email(self):
-        email = self.cleaned_data['email']
+    def clean_username(self):
+        username = self.cleaned_data['username']
 
-        return FormValidators.validate_email(email=email)
+        return FormValidators.validate_name(field=username, field_name='Name')

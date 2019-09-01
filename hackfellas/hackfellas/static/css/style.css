@@ -177,6 +177,10 @@ h1 {
 	transition: ease 0.7s all;
 }
 
+.input-group .error {
+    border-bottom: 3px solid #d9534f;
+}
+
 .input-group input:focus {
 	background-color: rgba(190, 180, 180, 0.4);
 	box-shadow: none;
@@ -192,11 +196,19 @@ h1 {
 }
 
 
+.error-msg {
+	color: white;
+	text-align: right;
+	font-size: 13px;
+	width: 100%;
+}
+
 .btn-holder {
 	text-align: center;
 	width: 100%;
 	margin-top: 24px;
 }
+
 
 .btn-send {
 	background: #625F66;
@@ -208,7 +220,6 @@ h1 {
 	font-size: 20px;
 	letter-spacing: 5px;
 	color: #d4d4d4;
-
 	transition: ease 0.4s all;
 }
 
@@ -219,7 +230,11 @@ h1 {
 	letter-spacing: 7px;
 }
 
-
+.btn-send:disabled {
+	opacity: 0.5;
+	transition: none;
+	pointer-events: none;
+}
 
 @media only screen and (max-width: 360px) {
 	a {

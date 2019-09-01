@@ -74,52 +74,60 @@
 		<div class="wrapper">
 		<form class="form">
 
-			
-		
-			
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="img/profile.png" alt="">
 				</div>
-				<input class="input" type="text" class="form-control" placeholder="Name" aria-label="Username" id="name">
+				<input id="input-name" type="text" class="input form-control" placeholder="Name" aria-label="Username" id="name">
 
 			</div>
+			<p id="error-name" class="error-msg">|</p>
 
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="img/profile.png" alt="">
 				</div>
-				<input class="input" type="text" class="form-control" placeholder="User name" aria-label="Username" id="username">
+				<input id="input-username"type="text" class="input form-control" placeholder="User name" aria-label="Username" id="username">
 
 			</div>
+			<p id="error-username" class="error-msg">|</p>
 
+			<!-- EMAIL -->
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="img/email.png" alt="">
 				</div>
-				<input class="input" type="email" class="form-control" placeholder="Email" aria-label="Username" id="email">
-
+				<input id="input-email" type="email" class="input form-control" placeholder="Email" aria-label="Username" id="email">
+				
 			</div>
-
+			<p id="error-email" class="error-msg">|</p>
+			<!-- EMAIL -->
+	
+			<!-- PASSWORD -->
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="img/password.png" alt="">
 				</div>
-				<input class="input" type="password" class="form-control" placeholder="Password" aria-label="Username" id="password">
+				<input id="input-password" type="password" class="input form-control" placeholder="Password" aria-label="Username">
 
 			</div>
+			<p id="error-password" class="error-msg">|</p>
+			<!-- PASSWORD -->
 
+			<!-- PASSWORD CONFIRM -->
 			<div class="input-group flex-nowrap">
 				<div class="input-group-prepend">
 					<img src="img/confirm.png" alt="">
 				</div>
-				<input class="input" type="password" class="form-control" placeholder="Confirm your password" aria-label="Username" id="confirm">
+				<input id="input-confirm" type="password" class="input form-control" placeholder="Confirm your password" aria-label="Username">
 
 			</div>
+			<p id="error-confirm" class="error-msg">|</p>
+			<!-- PASSWORD CONFIRM -->
 
 			<div class="input-group flex-nowrap">
 				<div class="btn-holder">
-					<input type="submit" value="register" class="btn-send">
+					<input id="register" type="submit" value="register" class="btn-send" disabled>
 				</div>
 				
 			</div>
@@ -128,7 +136,8 @@
 		</div>
 	</footer>
 
-
+	
+	<script type="text/javascript" src="js/main.js"></script>
 
 </body>
 

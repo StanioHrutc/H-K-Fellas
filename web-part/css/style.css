@@ -24,9 +24,7 @@ h1 {
 	font-weight: 600;
 }
 
-p {
-	
-}
+
 
 .main-header {
 	background: linear-gradient(to right bottom, rgba(189, 195, 199, 0.7), rgba(44, 62, 80, 0.9)), url('../img/hack.jpg') center no-repeat;
@@ -156,7 +154,9 @@ p {
 
 
 ::placeholder {
-	color: #d4d4d4;
+	color: red;
+	font-size: 16px;
+	font-weight: 600;
 }
 
 .wrapper {
@@ -191,10 +191,15 @@ p {
   	background: transparent;
   	border-bottom: 3px solid #43518e;
 	transition: ease 0.7s all;
+	letter-spacing: 1px;
+}
+
+.input-group .error {
+	border-bottom: 3px solid #d9534f;
 }
 
 .input-group input:focus {
-	background-color: rgba(190, 180, 180, 0.4);
+	background-color: rgba(190, 180, 180, 0.2);
 	box-shadow: none;
 	border-bottom: 3px solid #fff;
 }
@@ -207,6 +212,13 @@ p {
 	margin-right: 20px;
 }
 
+
+.error-msg {
+	color: white;
+	text-align: right;
+	font-size: 13px;
+	width: 100%;
+}
 
 .btn-holder {
 	text-align: center;
@@ -225,7 +237,6 @@ p {
 	font-size: 20px;
 	letter-spacing: 5px;
 	color: #d4d4d4;
-
 	transition: ease 0.4s all; 
 }
 
@@ -234,6 +245,12 @@ p {
 	font-weight: 400;
 	color: #fff;
 	letter-spacing: 7px;
+}
+
+.btn-send:disabled {
+	opacity: 0.5;
+	transition: none;
+	pointer-events: none;
 }
 
 @media only screen and (max-width: 360px) {
