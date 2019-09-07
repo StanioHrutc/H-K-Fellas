@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # personal apps
     'intro.apps.IntroConfig',
     'personal.apps.PersonalConfig',
+    'hackathons.apps.HackathonsConfig',
 
     # 3-rd party libs
     'widget_tweaks',

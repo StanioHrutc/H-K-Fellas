@@ -16,3 +16,7 @@ def profile(request):
 def logout(request):
     auth.logout(request=request)
     return redirect('index')
+
+
+def hackathons(request):
+    return redirect('hackathons')

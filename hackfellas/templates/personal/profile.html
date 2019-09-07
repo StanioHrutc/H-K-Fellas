@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
+
 {% if user.is_authenticated %}
     <h1>{{user.first_name}} had successfully</h1>
 {% else %}
@@ -14,7 +15,7 @@
 </h1>
 
 
-<a href="#">Hackathons (soon available)</a>
+<a href="{% url 'hackathons' %}">Hackathons (soon available)</a>
 <br>
 <a href="#">Find team (soon available)</a>
 <br>
