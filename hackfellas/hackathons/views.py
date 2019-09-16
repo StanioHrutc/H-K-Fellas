@@ -2,6 +2,8 @@ from django.shortcuts import render
 from urllib.request import urlopen
 from urllib.error import HTTPError
 from bs4 import BeautifulSoup
+from .models import Hackathon
+
 import re
 
 
@@ -81,9 +83,15 @@ class DouScrapper(HackScrapper):
 
         for article in self.articles:
             categories = DouScrapper.hackathon_article(article)
-            if categories is None: continue  # if category of article isn't hackathon continue iterating over articles
+            title      = re.sub('\xa0', ' ', article.find('h2').get_text().strip())
+            if categories is None or Hackathon.objects.filter(title=title).exists():
+                 continue  
+                 '''
+                    if category of article isn't hackathon continue iterating over articles
+                    if article with such title already exists
+                 '''
 
-            title              = article.find('h2').get_text().strip()
+            
             place_price_info   = DouScrapper.hackathon_place_price(article)
             brief_info         = article.find('p', {'class': 'b-typo'}).get_text().strip()
             article_body       = article.find('a', {'href': re.compile(r'https://dou.ua/calendar/')})['href']
@@ -93,17 +101,25 @@ class DouScrapper(HackScrapper):
             inner_img_src      = inner_content.find('img', {'class': 'event-info-logo'})['src']
             inner_links        = DouScrapper.filter_inner_links(inner_body_section.findAll('a', {'target': '_blank'}))
 
-            article_title = re.sub('\xa0', ' ', title)
+            
             article_info  = {
-                'categories': categories,
-                'place_price': place_price_info,
+                'when': place_price_info[0],
+                'price': place_price_info[1],
                 'brief_info': re.sub('\xa0', ' ', brief_info),
-                'article_body': article_body,
                 'img_src': inner_img_src,
                 'inner_links': inner_links
             }
+            new_hack = Hackathon(
+                title=title,
+                info=re.sub('\xa0', ' ', brief_info),
+                when=place_price_info[0],
+                price=place_price_info[1],
+                img=inner_img_src,
+                links=inner_links
+            )
 
-            yield {article_title: article_info}
+            new_hack.save()
+            print('new hackathon added')
 
 
     def general_scrap(self):
@@ -126,13 +142,8 @@ class DouScrapper(HackScrapper):
                 current_page_url = urlopen(test_url + str(counter))
             except HTTPError:
                 current_page_url = None
-            result_hackathons.append([article for article in scraped_articles])
-
-        for hackathon_page in result_hackathons:
-            if hackathon_page != []:
-                for hack in hackathon_page:
-                    print(hack)
-                    print()
+            
+          
 
     def __str__(self):
         return self.represent_title
@@ -141,8 +152,14 @@ class DouScrapper(HackScrapper):
 
 def hacks(request):
 
+    dou = DouScrapper('https://dou.ua/calendar/', 'DOU - Developers of Ukraine')
+
+    dou.general_scrap()
+
     return render(request=request,
                   template_name='hackathons/hacks.html',
                   context={})
+
+
 
 

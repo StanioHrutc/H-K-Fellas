@@ -236,6 +236,12 @@ h1 {
 	pointer-events: none;
 }
 
+
+#hackathon-list {
+	width: 1200px;
+}
+
+
 @media only screen and (max-width: 360px) {
 	a {
 		color: #fff;

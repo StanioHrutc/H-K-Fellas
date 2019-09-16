@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'hackathons.apps.HackathonsConfig',
 
     # 3-rd party libs
-    'widget_tweaks',
+    
 ]
 
 MIDDLEWARE = [
