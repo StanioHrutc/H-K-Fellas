@@ -1,0 +1,111 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+	<header class="main-header">
+
+		<nav class="navbar navbar-dark navbar-expand-lg">
+			<a class="navbar-brand" href="#">
+				<img src="" alt="">HackFFells
+			</a>
+
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" 	aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+				<ul class="navbar-nav mr-auto">
+
+					<li class="nav-item active">
+						<a href="#" class="nav-link">
+							Home
+						</a>
+					</li>
+					<li class="nav-item"><a href="#" class="nav-link">About
+					</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">Our Teams</a></li>
+					<li class="nav-item"><a href="#" class="nav-link">Developers</a></li>
+					<li class="nav-item login"><a href="{% url 'login' %}" class="nav-link">login
+					</a></li>
+
+				</ul>
+
+			</div>
+		</nav>
+
+		<div class="header-text">
+			<div class="intro">
+				<h1>The place</h1>
+				<h1>Where your team</h1>
+				<h1>Was born</h1>			
+			</div>
+			<p>Service which help you to find new fellows for your team in order to win your dream hackathon</p>
+
+			<div class="button-holder">
+				<a href="#main-footer-id" class="register">register</a>
+				<a href="#" class="more">More</a>
+			</div>
+		</div>
+	</header>
+
+
+
+	<footer class="main-footer" id="main-footer-id">
+		<div class="wrapper">
+		<form class="form" method="post">
+			{% csrf_token %}
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/profile.png" alt="">
+				</div>
+				<!--<input type="text" class="input form-control" placeholder="Name" aria-label="Username" id="name"> -->
+				{{ form.first_name }}
+			</div>
+			<p id="error-name" class="error-msg">{{ form.first_name.errors }}</p>
+
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/profile.png" alt="">
+				</div>
+				{{ form.username }}
+			</div>
+			<p id="error-username" class="error-msg">{{ form.username.errors }}</p>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/email.png" alt="">
+				</div>
+				{{ form.email }}
+			</div>
+			<p id="error-email" class="error-msg">{{ form.email.errors }}</p>
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/password.png" alt="">
+				</div>
+				{{ form.password }}
+			</div>
+			<p id="error-password" class="error-msg">{{ form.password.errors }}</p>
+
+
+			<div class="input-group flex-nowrap">
+				<div class="input-group-prepend">
+					<img src="../static/img/confirm.png" alt="">
+				</div>
+				{{ form.confirm }}
+			</div>
+			<p id="error-confirm" class="error-msg">{{ form.confirm.errors }}</p>
+
+			<div class="input-group flex-nowrap">
+				<div class="btn-holder">
+					<input id="register" type="submit" value="register" class="btn-send" disabled>
+				</div>
+			</div>
+
+		</form>
+		</div>
+	</footer>
+
+{% endblock %}

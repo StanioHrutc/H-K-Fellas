@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Success</title>
+</head>
+<body>
+    {% if new_user %}
+        <h1>Congradulation {{new_user.user_name}} had successfully registered</h1>
+    {% else %}
+        <h1>Where are the context</h1>
+    {% endif %}
+</body>
+</html>

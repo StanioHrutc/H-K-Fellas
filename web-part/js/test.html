@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+</head>
+<body>
+	
+	<div id="notes">
+		
+	</div>
+
+
+	<button id="create-note">Create note</button>
+
+
+
+	<input id="dummy-input" type="text" placeholder="Input text" />
+
+	<script>
+		console.log('From head')
+
+		const p = document.querySelector('p');
+		//p.remove();
+
+		// console.log(document.querySelector('span'))
+
+
+		// get all selectors
+		const ps = document.querySelectorAll('p');
+		ps.forEach(function (p) {
+			console.log(p.textContent);
+		});
+
+
+		const paragraphs = document.querySelectorAll('p');
+
+		paragraphs.forEach(function (paragraph) {
+			if (paragraph.textContent.includes('Why')) {
+				paragraph.remove();
+			}
+		});
+
+
+		// adding elements
+
+		const newParagraph = document.createElement('h2');
+
+		newParagraph.textContent = "Header 2 added by document.createElement('h2')"
+
+		document.querySelector('#notes').appendChild(newParagraph);
+
+
+		//chalange
+		const notes = [{
+			text: 'Order thing',
+			completed: false
+		}, {
+			text: 'Order Lemon',
+			completed: false
+		}, {
+			text: 'Order Net',
+			completed: true
+		}, {
+			text: 'Order orange',
+			completed: true
+		}, {
+			text: 'Order thing',
+			completed: false
+		}];
+
+		// create p tag where you can see how much todos left
+		let counter = 0;
+
+		notes.forEach(function (object) {
+			if (object.completed == false) {
+				counter++;
+				let element = document.createElement('p');
+				element.textContent = object.text
+				document.querySelector('body').appendChild(element);
+			}
+		});
+
+		const todoLeft = document.createElement('h2');
+		todoLeft.textContent = (counter + " todos left");
+
+		document.querySelector('body').appendChild(todoLeft);
+
+
+
+		const filters = {
+			searchText: ''
+		}
+
+		const renderNotes = function (notes, filters) {
+			const filteredNotes = notes.filter(function (note) {
+				return note.text.toLowerCase().includes(filters.searchText.toLowerCase())
+			})
+
+			document.querySelector('#notes').innerHTML = '' // = '' to clear all elements
+			
+			filteredNotes.forEach(function (note) {
+				const noteEl = document.createElement('p')
+				noteEl.textContent = note.text
+				document.querySelector('#notes').appendChild(noteEl)
+			})
+		}
+
+		renderNotes(notes, filters)
+
+		// user interaction
+		document.querySelector('button').addEventListener('click', function () {
+			console.log('clicked');
+		})
+
+
+		// advanced queries
+//		document.querySelectorAll('button')[0].addEventListener('click', function(e) {
+
+//		});
+
+		document.querySelector('#create-note').addEventListener('click', function() {
+			document.querySelectorAll('.note').forEach(function (note) {
+				note.remove();
+			})
+  		});
+
+
+
+
+		// text inputs
+
+		document.querySelector('#dummy-input').addEventListener('input', function (e) {
+			console.log(e.target.value)
+			filters.searchText = e.target.value
+			renderNotes(notes, filters)
+		});
+
+
+
+
+
+	</script>
+	
+</body>
+</html>

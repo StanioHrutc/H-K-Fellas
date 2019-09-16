@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+    <h1>{{user.first_name}} had successfully</h1>
+{% else %}
+    <h1>Please register </h1>
+{% endif %}
+
+<h1>
+    <a href="{% url 'logout' %}">
+        logout
+    </a>
+</h1>
+
+
+<a href="{% url 'hackathons' %}">Hackathons (soon available)</a>
+<br>
+<a href="#">Find team (soon available)</a>
+<br>
+<a href="#">Create team (soon available)</a>
+<br>
+<a href="#">Manual (soon available)</a>
+<br>
+{% endblock %}
